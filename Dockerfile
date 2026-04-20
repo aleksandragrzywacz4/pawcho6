@@ -1,25 +1,30 @@
-FROM alpine:latest AS builder
+#syntax=docker/dockerfile:1
 
-ARG VERSION
-ENV APP_VERSION=$VERSION
+#pobieranie kodu przez SSH
+FROM alpine AS builder
+RUN apk add --no-cache git openssh-client git
 
-WORKDIR /app
+#konfiguracja
+RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-RUN echo "<html><body>" > index.html && \
-    echo "<h1>Informacje o serwerze</h1>" >> index.html && \
-    echo "<p><b>Adres IP:</b> ##IP##</p>" >> index.html && \
-    echo "<p><b>Nazwa serwera:</b> ##HOSTNAME##</p>" >> index.html && \
-    echo "<p><b>Wersja aplikacji:</b> $APP_VERSION</p>" >> index.html && \
-    echo "</body></html>" >> index.html
+#pobieranie kodu z repo
+RUN --mount=type=ssh git clone git@github.com:aleksandragrzywacz4/pawcho6.git /src
 
+#Etap 2
 FROM nginx:alpine
+LABEL org.opencontainers.image.source="https://github.com/aleksandragrzywacz4/pawcho6"
+LABEL org.opencontainers.image.authors="Aleksandra Grzywacz"
 
 RUN apk add --no-cache curl
 
-COPY --from=builder /app/index.html /usr/share/nginx/html/index.html
+ARG VERSION="lab6"
+ENV APP_VERSION=$VERSION
+
+COPY --from=builder /src/index.html /usr/share/nginx/html/index.html
 
 RUN echo 'sed -i "s/##IP##/$(hostname -i)/g" /usr/share/nginx/html/index.html && \
           sed -i "s/##HOSTNAME##/$(hostname)/g" /usr/share/nginx/html/index.html && \
+	  sed -i "s/##VERSION##/'"$APP_VERSION"'/g" /usr/share/nginx/html/index.html && \
           nginx -g "daemon off;"' > /entrypoint.sh && chmod +x /entrypoint.sh
 
 HEALTHCHECK --interval=10s --timeout=3s \
