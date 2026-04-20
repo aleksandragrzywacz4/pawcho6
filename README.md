@@ -2,12 +2,13 @@ Laboratorium 6
 Aleksandra Grzywacz
 
 1. Utworzenie publicznego repozytorium
+   
 gh repo create pawcho6 --public --source=. --remote=origin --push
 
-2. Treść pliku Dockerfile
+3. Treść pliku Dockerfile
    <img width="824" height="721" alt="image" src="https://github.com/user-attachments/assets/29d0ebab-66b1-4027-8156-64c4369a76f4" />
 
-3. Budowa obrazu i publikacja
+4. Budowa obrazu i publikacja
 
 -rejestracja klucza w agencie SSH
 
