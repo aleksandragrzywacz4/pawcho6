@@ -37,6 +37,5 @@ Zmieniłam widoczność Package na Public i połączyłam z repozytorium pawcho6
 4. Wynik działania
 <img width="1504" height="155" alt="image" src="https://github.com/user-attachments/assets/e2416dbe-7d73-4b98-9bc1-8d1274243a5f" />
 
-<img width="605" height="350" alt="image" src="https://github.com/user-attachments/assets/87d307f1-4c21-45ac-a66f-f71b73602782" />
-
+<img width="578" height="301" alt="image" src="https://github.com/user-attachments/assets/7126b035-f6ab-475c-a8df-f64c29444255" />
 
