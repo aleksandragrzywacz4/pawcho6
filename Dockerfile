@@ -33,12 +33,16 @@ RUN apk add --update --no-cache curl && rm -rf /etc/apk/cache
 
 COPY --from=dev_builder /workspace_lab6/build/. /usr/share/nginx/html
 
+RUN echo 'sed -i "s/##IP##/$(hostname -i)/g" /usr/share/nginx/html/index.html && \
+          sed -i "s/##HOSTNAME##/$(hostname)/g" /usr/share/nginx/html/index.html && \
+          sed -i "s/##VERSION##/'"$VERSION"'/g" /usr/share/nginx/html/index.html && \
+          nginx -g "daemon off;"' > /entrypoint.sh && chmod +x /entrypoint.sh
+
 EXPOSE 80
 
 HEALTHCHECK --interval=10s --timeout=3s \
         CMD curl -f http://localhost/ || exit 1
 
-CMD ["nginx", "-g", "daemon off;"]
 
-
+ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
 
