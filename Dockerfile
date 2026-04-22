@@ -15,7 +15,7 @@ RUN npx create-react-app workspace_lab6
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 RUN --mount=type=ssh,id=s56git git clone git@github.com:aleksandragrzywacz4/pawcho6.git /cloned_repo && \
-    cp /cloned_repo/App.js /workspace_lab6/src/App.js
+    cp /cloned_repo/index.html /workspace_lab6/src/index.html
 
 WORKDIR /workspace_lab6
 
@@ -39,5 +39,6 @@ HEALTHCHECK --interval=10s --timeout=3s \
         CMD curl -f http://localhost/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
+
 
 
