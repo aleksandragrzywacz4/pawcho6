@@ -6,7 +6,7 @@ Aleksandra Grzywacz
 gh repo create pawcho6 --public --source=. --remote=origin --push
 
 2. Treść pliku Dockerfile
-   <img width="478" height="603" alt="image" src="https://github.com/user-attachments/assets/92df6977-957a-4f3a-92ad-4129b71b886a" />
+   <img width="848" height="935" alt="image" src="https://github.com/user-attachments/assets/7fe60a9c-2623-45d8-8de3-590947f0557f" />
 
 
 
@@ -37,5 +37,6 @@ Zmieniłam widoczność Package na Public i połączyłam z repozytorium pawcho6
 4. Wynik działania
 <img width="1504" height="155" alt="image" src="https://github.com/user-attachments/assets/e2416dbe-7d73-4b98-9bc1-8d1274243a5f" />
 
+<img width="605" height="350" alt="image" src="https://github.com/user-attachments/assets/87d307f1-4c21-45ac-a66f-f71b73602782" />
 
 
