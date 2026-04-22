@@ -1,10 +1,9 @@
 # syntax=docker/dockerfile:1.3
 
 #pobieranie kodu przez SSH
-FROM scratch AS dev_builder
+FROM alpine:latest AS dev_builder
 
 ARG VERSION
-ADD alpine-minirootfs-3.23.3-aarch64.tar /
 
 RUN apk update && \
     apk upgrade && \
@@ -40,3 +39,5 @@ HEALTHCHECK --interval=10s --timeout=3s \
         CMD curl -f http://localhost/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
+
+
