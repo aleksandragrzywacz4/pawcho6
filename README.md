@@ -6,7 +6,7 @@ Aleksandra Grzywacz
 gh repo create pawcho6 --public --source=. --remote=origin --push
 
 2. Treść pliku Dockerfile
-   <img width="819" height="783" alt="image" src="https://github.com/user-attachments/assets/cfa8185c-fbcc-4168-ab7a-b3ff100d4d72" />
+   <img width="478" height="603" alt="image" src="https://github.com/user-attachments/assets/92df6977-957a-4f3a-92ad-4129b71b886a" />
 
 
 
